@@ -17,7 +17,7 @@ public class Usuario {
     private String email;
     private String password;
     @OneToOne
-    @JoinColumn(name = "account_id") // Nome da coluna na tabela Conta que faz referência à tabela Usuario
+    @JoinColumn(name = "account_id")
     private Conta account;
     private String role;
 }

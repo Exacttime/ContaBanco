@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import stu.lobank.domain.entities.Conta;
 import stu.lobank.domain.entities.Usuario;
 import stu.lobank.repository.UserRepository;
 import stu.lobank.services.UserService;

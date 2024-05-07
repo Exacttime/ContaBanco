@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import stu.lobank.domain.entities.Conta;
 @Repository
 public interface AccountRepository extends JpaRepository<Conta, Long> {
-public Conta findContaByNumber(int number);
-public Conta findContaById(int id);
+    Conta findContaByNumber(int number);
+    Conta findContaById(int id);
 }
