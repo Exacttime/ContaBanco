@@ -37,7 +37,4 @@ public class Conta implements IConta {
         this.withdraw(value);
         destinationAccount.deposit(value);
     }
-    @Override
-    public void printBankStatement() {
-    }
 }
