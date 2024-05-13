@@ -1,11 +1,12 @@
 package stu.lobank.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import stu.lobank.domain.entities.UserDetailsImpl;
 import stu.lobank.domain.entities.Usuario;
 import stu.lobank.repository.UserRepository;
 import stu.lobank.services.UserService;
@@ -32,31 +33,18 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Usuario> user = userRepository.findOptionalUserByUsername(username);
-        if (user.isPresent()) {
-            var userObj = user.get();
-            return User.builder()
-                    .username(userObj.getUsername())
-                    .password(userObj.getPassword())
-                    .roles(getRoles(userObj))
-                    .build();
-        } else {
-            throw new UsernameNotFoundException(username);
-        }
+        Usuario user = userRepository.findOptionalUserByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+        return UserDetailsImpl.build(user);
     }
     @Override
     public Usuario findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário com id " + id + " não encontrado."));
     }
-    private String[] getRoles(Usuario user) {
-        if (user.getRole() == null) {
-            return new String[]{"USER"};
-        }
-        return user.getRole().split(",");
-    }
-    private boolean existsById(Integer id) {
+    private boolean existsById(Long id) {
         Optional<Usuario> existingUser = userRepository.findById(Long.valueOf(id));
         return existingUser.isPresent();
     }
