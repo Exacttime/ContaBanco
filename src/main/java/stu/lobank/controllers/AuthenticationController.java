@@ -14,17 +14,17 @@ import stu.lobank.domain.dto.request.LoginRequest;
 import stu.lobank.domain.dto.request.SignupRequest;
 import stu.lobank.domain.dto.response.JwtResponse;
 import stu.lobank.domain.dto.response.MessageResponse;
-import stu.lobank.domain.entities.Role;
-import stu.lobank.domain.entities.UserDetailsImpl;
-import stu.lobank.domain.entities.UserRoles;
-import stu.lobank.domain.entities.Usuario;
+import stu.lobank.domain.entities.*;
+import stu.lobank.repository.AccountRepository;
 import stu.lobank.repository.RoleRepository;
 import stu.lobank.repository.UserRepository;
 import stu.lobank.security.jwt.JwtUtils;
+import stu.lobank.services.AccountService;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -46,6 +46,8 @@ public class AuthenticationController {
 
     @Autowired
     JwtUtils jwtUtils;
+    @Autowired
+    AccountRepository accountRepository;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -83,7 +85,7 @@ public class AuthenticationController {
         }
 
         // Create new user's account
-        Usuario user = new Usuario(signUpRequest.getUsername(), signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+        Usuario user = new Usuario(signUpRequest.getFullName(),signUpRequest.getUsername(), signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
@@ -116,6 +118,28 @@ public class AuthenticationController {
         }
 
         user.setRoles(roles);
+        Conta conta = new Conta();
+        conta.setAgency(1010);
+        conta.setBalance(0);
+        conta.setCreditLimit(0);
+
+        boolean uniqueNumberFound = false;
+        int uniqueNumber = 0;
+        Random rand = new Random();
+
+        while (!uniqueNumberFound) {
+            uniqueNumber = 100_000 + rand.nextInt(900_000);
+            Conta existingAccount = accountRepository.findContaByNumber(uniqueNumber);
+            if (existingAccount == null) {
+                uniqueNumberFound = true;
+                conta.setNumber(uniqueNumber);
+            }
+        }
+        // Salva a conta no banco de dados
+        accountRepository.save(conta);
+
+        user.setAccount(conta);
+
         userRepository.save(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));

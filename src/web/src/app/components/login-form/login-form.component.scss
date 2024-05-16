@@ -4,8 +4,8 @@
     width: 800px;
     height: 800px;
     border-radius: 15px;
-    background-image: linear-gradient($primary,$secondary);
-    border: 3px solid $secondary;
+    background-color: hsl(255, 68%, 74%, 20%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: absolute;
     top:0;
     bottom: 0;
@@ -26,4 +26,7 @@
 }
 .error-message{
     color: red;
+}
+.background{
+    background-color: #F3F1FA;
 }

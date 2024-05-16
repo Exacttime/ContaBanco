@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+.background{
+  background-color: #F3F1FA;
+}
+header{
+  background-color: hsl(255, 61%, 39%, 20%);
+  width: 100%;
+  height: 10%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  .right-side{
+    right: 1rem;
+    top: 1rem;
+    position: absolute;
+    a{
+      margin-right: 1rem;
+    }
+  }
+}
+h1{
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: #09070e;
+}

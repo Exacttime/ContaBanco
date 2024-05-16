@@ -1,1 +1,26 @@
-<p>home works!</p>
+<body class="background">
+<div class="container">
+<h1 class="title">Bem vindo {{name}}!</h1>
+    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <app-account-details></app-account-details>
+    <div class="button-row" style="display: flex; justify-content: normal;">
+        <a (click)="onFormSubmit()" color="primary" mat-fab extended routerLink=".">
+            <mat-icon svgIcon="transfer">
+            </mat-icon>
+            Tranferencia
+        </a>
+        <a color="primary" mat-fab extended routerLink=".">
+            <mat-icon svgIcon="history">
+            </mat-icon>
+            Extrato
+        </a>
+        <a color="primary" mat-fab extended routerLink=".">
+            <mat-icon svgIcon="transfer">
+            </mat-icon>
+            Link 3
+        </a>
+    </div>
+</div>
+</body>

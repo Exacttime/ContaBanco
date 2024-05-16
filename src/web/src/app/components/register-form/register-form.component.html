@@ -1,0 +1,29 @@
+<body class="background">
+<div class="container">
+    <div class="form">
+        <mat-form-field color="primary">
+            <mat-label>Usuario</mat-label>
+            <input [(ngModel)]="username" matInput>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="email" type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+            @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                <mat-error>Please enter a valid email address</mat-error>
+            }
+            @if (emailFormControl.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field color="primary">
+            <mat-label>Funções</mat-label>
+            <input type="select" [(ngModel)]="role" matInput>
+        </mat-form-field>
+        <mat-form-field color="primary">
+            <mat-label>Senha</mat-label>
+            <input type="password" [(ngModel)]="password" matInput>
+        </mat-form-field>
+        <button (click)="onFormSubmit()" mat-flat-button color="secondary">Entrar</button>
+    </div>
+</div>
+</body>

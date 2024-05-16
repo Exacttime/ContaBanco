@@ -1,6 +1,7 @@
 import { nxE2EPreset } from '@nx/cypress/plugins/cypress-preset';
 
 import { defineConfig } from 'cypress';
+import {nodePolyfills} from "vite-plugin-node-polyfills";
 
 export default defineConfig({
   e2e: {

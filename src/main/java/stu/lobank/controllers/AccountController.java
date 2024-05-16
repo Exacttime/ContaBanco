@@ -2,6 +2,7 @@ package stu.lobank.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import stu.lobank.domain.dto.request.TransferRequest;
 import stu.lobank.domain.entities.Conta;
 import stu.lobank.services.AccountService;
 
@@ -27,10 +28,10 @@ public class AccountController extends BaseController {
         accountService.createAccount(conta);
     }
     @PostMapping("/conta/{sourceNumber}/transfer/{destinationNumber}")
-    public void transferMoney(@PathVariable int sourceNumber, @PathVariable int destinationNumber, @RequestBody double amount) {
+    public void transferMoney(@PathVariable int sourceNumber, @PathVariable int destinationNumber, @RequestBody TransferRequest transferRequest) {
         Conta sourceAccount = accountService.getAccount(sourceNumber);
         Conta destinationAccount = accountService.getAccount(destinationNumber);
-        sourceAccount.transfer(amount, destinationAccount);
+        sourceAccount.transfer(transferRequest.getAmount(), destinationAccount);
         accountService.updateAccount(sourceAccount);
         accountService.updateAccount(destinationAccount);
     }

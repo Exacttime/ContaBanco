@@ -1,3 +1,4 @@
+<body class="background">
 <div class="container">
     <div class="form">
         <mat-form-field color="primary">
@@ -8,7 +9,9 @@
             <mat-label>Senha</mat-label>
             <input type="password" [(ngModel)]="password" matInput>
         </mat-form-field>
-        <button (click)="onFormSubmit()" mat-flat-button color="primary">Entrar</button>
+        <button (click)="onFormSubmit()" mat-flat-button color="secondary">Entrar</button>
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
+
 </div>
+</body>
