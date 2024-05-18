@@ -1,6 +1,6 @@
 <body class="background">
 <div class="container">
-    <h1 class="title">Bem vindo {{name}}!</h1>
+    <h1 class="title">Transferência</h1>
     <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
         <mat-icon>menu</mat-icon>
     </button>
@@ -12,9 +12,9 @@
         </mat-form-field>
         <mat-form-field color="primary">
             <mat-label>Valor</mat-label>
-            <input [(ngModel)]="amount" matInput>
+            <input type="number" [(ngModel)]="amount" matInput>
         </mat-form-field>
-        <button (click)="onFormSubmit()" mat-flat-button color="secondary">Entrar</button>
+        <button (click)="onFormSubmit()" mat-flat-button color="secondary">Enviar</button>
     </div>
 </div>
 </body>

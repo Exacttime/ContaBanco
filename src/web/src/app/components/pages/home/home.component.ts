@@ -7,6 +7,7 @@ import {UserDetailsService} from "../../../services/UserDetailsService";
 import {Router, RouterLink} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {AccountDetailsComponent} from "../../account-details/account-details.component";
+import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 const TRANSFER_ICON =
     `
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -27,21 +28,33 @@ fill="#e8eaed">
 @Component({
   selector: 'app-home',
   standalone: true,
-    imports: [CommonModule, MatIcon, MatMiniFabButton, MatCard, MatCardContent, MatCardTitle, MatFabAnchor, RouterLink, AccountDetailsComponent],
+  imports: [CommonModule, MatIcon,
+    MatMiniFabButton, MatCard, MatCardContent,
+    MatCardTitle, MatFabAnchor, RouterLink,
+    AccountDetailsComponent, MatDrawerContainer,MatDrawer],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit{
   limit!: number;
-  name!: string;
+  name!: string | null;
+  showFiller = false;
+  isDrawerVisible: boolean = false;
   constructor(private userDetailsService: UserDetailsService,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private router: Router) {
       iconRegistry.addSvgIconLiteral('transfer', sanitizer.bypassSecurityTrustHtml(TRANSFER_ICON));
       iconRegistry.addSvgIconLiteral('history', sanitizer.bypassSecurityTrustHtml(HISTORY_ICON));
   }
-  ngOnInit(){
-  }
 
-    onFormSubmit() {
-        this.router.navigate(['transfer']).then(r => console.log("Deu bom"));
-    }
+  toggleDrawer() {
+    this.isDrawerVisible = !this.isDrawerVisible;
+  }
+  ngOnInit(){
+    this.name = sessionStorage.getItem('name');
+  }
+  toTransactionList(){
+    this.router.navigate(['transaction-list']);
+  }
+  onFormSubmit() {
+    this.router.navigate(['transfer']).then(r => console.log("Deu bom"));
+  }
 }

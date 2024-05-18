@@ -3,6 +3,7 @@ package stu.lobank.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stu.lobank.domain.entities.Conta;
+import stu.lobank.domain.entities.Transacao;
 import stu.lobank.repository.AccountRepository;
 import stu.lobank.services.AccountService;
 

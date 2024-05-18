@@ -2,11 +2,11 @@ package stu.lobank.domain.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import stu.lobank.exceptions.AccountExceptions;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -61,10 +61,10 @@ public class Conta implements IConta {
     @Override
     public void transfer(double value, IConta destinationAccount) {
         if(value > balance){
-            throw new IllegalArgumentException("Saldo insuficiente para realizar a transferência.");
+            throw new AccountExceptions("Saldo insuficiente para realizar a transferência.");
         }
         if(destinationAccount == null){
-            throw new IllegalArgumentException("A conta destino não existe.");
+            throw new AccountExceptions("A conta destino não existe.");
         }
         this.withdraw(value);
         destinationAccount.deposit(value);

@@ -21,7 +21,6 @@ export class LoginFormComponent {
   username!: string;
   password!: string;
   errorMessage!: string;
-
   constructor(private authService: AuthService, private router: Router) { }
 
   onFormSubmit() {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import {LoginFormComponent} from "./components/login-form/login-form.component";
+import {MatSelectModule} from "@angular/material/select";
 
 @Component({
   standalone: true,

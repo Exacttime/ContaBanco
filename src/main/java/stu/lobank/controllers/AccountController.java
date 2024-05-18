@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import stu.lobank.domain.dto.request.TransferRequest;
 import stu.lobank.domain.entities.Conta;
+import stu.lobank.domain.entities.Transacao;
 import stu.lobank.services.AccountService;
 
 import java.util.List;
@@ -23,6 +24,10 @@ public class AccountController extends BaseController {
     public Conta getAccount(@PathVariable int number) {
         return accountService.getAccount(number);
     }
+    @GetMapping("/conta/{accountNumber}/transactions")
+    public List<Transacao> getTransactions(@PathVariable int accountNumber) {
+        return accountService.getAccount(accountNumber).getTransacoes();
+    }
     @PostMapping("/conta")
     public void createAccount(@RequestBody Conta conta) {
         accountService.createAccount(conta);
@@ -41,4 +46,5 @@ public class AccountController extends BaseController {
         sourceAccount.deposit(amount);
         accountService.updateAccount(sourceAccount);
     }
+
 }

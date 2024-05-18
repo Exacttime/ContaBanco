@@ -13,7 +13,11 @@ export class AccountService {
         const userAccount = sessionStorage.getItem('account');
         return this.transfer(userAccount!,destinyAccount!, value!);
     }
-
+    getTransactions(userId: string){
+        const token = localStorage.getItem('token');  // Substitua por seu token JWT
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+        return this.http.get<any>(this.accountUrl + `/${userId}/transactions`,{headers});
+    }
     transfer(userAccount: string, destinyAccount: string, value: number): Observable<any> {
         const url = `${this.accountUrl}/${userAccount}/transfer/${destinyAccount}`;
         const token = localStorage.getItem('token');  // Substitua por seu token JWT
