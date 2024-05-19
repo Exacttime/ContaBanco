@@ -10,4 +10,5 @@ public interface UserService {
     List<Usuario> findAll();
     UserDetails loadUserByUsername(String username);
     Usuario findById(Long id);
+    void update(Usuario user);
 }

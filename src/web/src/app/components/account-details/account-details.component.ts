@@ -33,7 +33,8 @@ export class AccountDetailsComponent implements OnInit{
         },
         (error) => {
           console.error('Erro:', error);
-          this.router.navigate(['login']).then();
+            localStorage.clear();
+            this.router.navigate(['login']).then();
         }
     );
   }

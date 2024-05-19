@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         userRepository.save(user);
     }
+    public void update(Usuario user){
+        if(!existsById(user.getId())){
+            throw new IllegalArgumentException("ID não encontrado");
+        }
+        userRepository.save(user);
+    }
     @Override
     public List<Usuario> findAll() {
         return userRepository.findAll();

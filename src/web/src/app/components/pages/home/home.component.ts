@@ -8,6 +8,7 @@ import {Router, RouterLink} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {AccountDetailsComponent} from "../../account-details/account-details.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 const TRANSFER_ICON =
     `
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -31,7 +32,7 @@ fill="#e8eaed">
   imports: [CommonModule, MatIcon,
     MatMiniFabButton, MatCard, MatCardContent,
     MatCardTitle, MatFabAnchor, RouterLink,
-    AccountDetailsComponent, MatDrawerContainer,MatDrawer],
+    AccountDetailsComponent, MatDrawerContainer, MatDrawer, MatMenu, MatMenuTrigger, MatMenuItem],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit{
   name!: string | null;
   showFiller = false;
   isDrawerVisible: boolean = false;
+  isAdminOrMod: boolean = false;
   constructor(private userDetailsService: UserDetailsService,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private router: Router) {
       iconRegistry.addSvgIconLiteral('transfer', sanitizer.bypassSecurityTrustHtml(TRANSFER_ICON));
       iconRegistry.addSvgIconLiteral('history', sanitizer.bypassSecurityTrustHtml(HISTORY_ICON));
@@ -50,6 +52,14 @@ export class HomeComponent implements OnInit{
   }
   ngOnInit(){
     this.name = sessionStorage.getItem('name');
+    const roles = localStorage.getItem('roles');
+    if (!roles) {
+      localStorage.clear();
+      this.router.navigate(['login']).then();
+    } else {
+      const rolesArray = roles.split(','); // Split roles into an array
+      this.isAdminOrMod = rolesArray.includes('ROLE_ADMIN') || rolesArray.includes('ROLE_MODERATOR');
+    }
   }
   toTransactionList(){
     this.router.navigate(['transaction-list']);

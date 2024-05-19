@@ -1,0 +1,33 @@
+.background{
+  background: #F3F1FA;
+}
+.container{
+  background-color: hsl(255, 68%, 74%, 20%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100rem;
+  max-width: 100rem;
+  height: 800px;
+
+  border-radius: 15px;
+  position: absolute;
+
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  .title{
+    font-family: Inter, sans-serif;
+    color: #09070e;
+    padding-left: 5rem;
+    padding-top: 5rem;
+  }
+  button[mat-mini-fab]{
+    min-width: 50px;
+    min-height: 50px;
+    position: absolute;
+    right: 5rem;
+    top: 5rem;
+  }
+}
