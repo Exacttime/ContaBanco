@@ -1,4 +1,4 @@
-
+## Portuguese
 # Estrutura Básica / (O que eu estava pensando)
 - Design Orientado a Domínio (DDD)
 - Estilo Arquitetural REST
@@ -18,7 +18,7 @@ Primeiro, o “como” foi o aspecto mais desafiador do projeto. Como fazer isso
 Eu apenas sabia que era possível, e foi assim que comecei minhas pesquisas e estudos. Utilizei documentação, ajuda de IA e alguns professores da internet. Um grande auxílio foi o Bezkoder (https://www.bezkoder.com), 
 que oferece documentação perfeita com detalhes que cobrem quase tudo. O segundo desafio, relativamente mais fácil de resolver, é encontrar motivação para trabalhar no projeto todos os dias. Em alguns dias, a vontade de continuar pode ser 
 menor ou podemos enfrentar dias ruins. Nessas situações, me esforço para fazer pelo menos um pouco, sabendo que o próprio processo de aprendizado é envolvente e me motiva a seguir em frente.
-##English
+## English
 # Basic Structure / (What was i thinking)
 - Domain Driven Design(DDD)
 - REST Architectural Style
