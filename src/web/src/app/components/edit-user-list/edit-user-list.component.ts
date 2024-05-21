@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AccountDetailsComponent} from "../account-details/account-details.component";
 import {MatButton, MatFabAnchor, MatMiniFabButton} from "@angular/material/button";
@@ -19,8 +19,11 @@ import {EditRegisterFormComponent} from "../edit-register-form/edit-register-for
   templateUrl: './edit-user-list.component.html',
   styleUrl: './edit-user-list.component.scss',
 })
-export class EditUserListComponent {
-  name!: string;
+export class EditUserListComponent implements OnInit{
+  name!: string | null;
   constructor() {
+  }
+  ngOnInit() {
+    this.name = sessionStorage.getItem('name');
   }
 }

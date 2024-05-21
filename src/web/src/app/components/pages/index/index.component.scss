@@ -26,23 +26,27 @@ h1{
 }
 .card-container {
   margin-top: 15px;
-  width: 100%;
-  height: 100%;
 }
-
-.card-container mat-card {
-  width: 30%;
+.card-style{
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  background-color: black;
-  color: #372c60;
-  font-size: 1.2rem;
+  width: 30%;
   display: flex;
   flex-direction: column; /* To align items vertically */
   align-items: center; /* To center items horizontally */
   justify-content: center; /* To center items vertically */
+  background-color: #4527a0;
+  color: #F3F1FA;
+  border-radius: 10px;
 }
-
+.card-container mat-card {
+  background-color: transparent;
+  font-size: 1.2rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: none;
+}
 .card-container mat-icon {
   width: 96px;
   height: 96px;
@@ -50,15 +54,4 @@ h1{
   align-items: center;
   justify-content: center;
   margin-right: 8px; /* Adjust the spacing between icon and text */
-}
-
-.card-container button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Adjust as needed */
-}
-
-.card-container button span {
-  margin-left: 8px; /* Adjust the spacing between icon and text */
 }
