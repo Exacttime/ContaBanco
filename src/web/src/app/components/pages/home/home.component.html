@@ -5,8 +5,8 @@
         <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button *ngIf="isAdminOrMod" mat-menu-item>Administrador</button>
-        <button mat-menu-item>Configurações da conta</button>
+        <button *ngIf="isAdminOrMod" (click)="adminList()" mat-menu-item>Administrador</button>
+        <button mat-menu-item (click)="editUser()">Configurações da conta</button>
         <button mat-menu-item (click)="logout()">Logoff</button>
     </mat-menu>
     <app-account-details></app-account-details>

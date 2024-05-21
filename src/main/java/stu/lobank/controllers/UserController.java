@@ -34,6 +34,7 @@ public class UserController extends BaseController {
         this.userRepository = userRepository;
     }
     @GetMapping("/users")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
     public List<Usuario> listUsers(){
         return userService.findAll();
     }
