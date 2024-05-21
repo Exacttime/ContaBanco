@@ -67,4 +67,7 @@ export class HomeComponent implements OnInit{
   onFormSubmit() {
     this.router.navigate(['transfer']).then(r => console.log("Deu bom"));
   }
+  logout(){
+    this.userDetailsService.logout();
+  }
 }

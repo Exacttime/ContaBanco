@@ -1,5 +1,6 @@
 package stu.lobank.controllers;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,6 +48,8 @@ public class AuthenticationController {
     @Autowired
     JwtUtils jwtUtils;
     @Autowired
+    private HttpSession httpSession;
+    @Autowired
     AccountRepository accountRepository;
 
     @PostMapping("/login")
@@ -69,7 +72,12 @@ public class AuthenticationController {
                 userDetails.getEmail(),
                 roles));
     }
-
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutUser() {
+        SecurityContextHolder.clearContext();
+        httpSession.invalidate();
+        return ResponseEntity.ok(new MessageResponse("User logged out successfully!"));
+    }
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {

@@ -5,16 +5,27 @@
 <header>
     <h1>Lobank</h1>
     <div class="right-side">
-    <a color="primary" mat-fab extended routerLink=".">
+    <a color="primary" (click)="goToRegister()" mat-fab extended routerLink=".">
         <mat-icon svgIcon="register"></mat-icon>
         Register
     </a>
-    <a color="primary" mat-fab extended routerLink=".">
+    <a color="primary" (click)="goToLogin()" mat-fab extended routerLink=".">
         <mat-icon svgIcon="login">
         </mat-icon>
         Login
     </a>
     </div>
 </header>
-
+<div class="card-container">
+<a href="https://github.com/Exacttime">
+    <div class="card-container">
+        <mat-card>
+            <button mat-button>
+                <mat-icon>icon_name</mat-icon>
+                <span>Button Text</span>
+            </button>
+        </mat-card>
+    </div>
+</a>
+</div>
 </body>
