@@ -1,21 +1,27 @@
 <body class="background">
 <div class="container">
     <div class="list-container">
-        <ng-container class="list-container" *ngFor="let transaction of transactions">
-        <mat-card class="example-card">
-            <mat-card-header>
-                <mat-card-subtitle>{{transaction.tipo}}</mat-card-subtitle>
-                <mat-card-title>Transação {{transaction.id}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <p>Valor: {{transaction.valor}}</p>
-                <p>Saldo Anterior: {{transaction.saldoAnterior}}</p>
-                <p>Saldo Atual: {{transaction.saldoAtual}}</p>
-                <p>Data: {{transaction.dataTransacao}}</p>
-                <mat-divider></mat-divider>
-            </mat-card-content>
-        </mat-card>
-    </ng-container>
+        <ng-container *ngIf="transactions.length > 0; else noTransactions">
+            <ng-container class="list-container" *ngFor="let transaction of transactions">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>{{transaction.tipo}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>Valor: {{transaction.valor}}</p>
+                        <p>Saldo Anterior: {{transaction.saldoAnterior}}</p>
+                        <p>Saldo Atual: {{transaction.saldoAtual}}</p>
+                        <p>Data: {{ formatDate(transaction.dataTransacao) }}</p>
+                        <mat-divider></mat-divider>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </ng-container>
+        <ng-template #noTransactions>
+            <div class="no-transactions-message">
+                <p>Não há nenhum extrato ou histórico de transação para esta conta.</p>
+            </div>
+        </ng-template>
     </div>
 </div>
 </body>

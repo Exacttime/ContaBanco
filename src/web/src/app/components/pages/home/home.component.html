@@ -11,20 +11,15 @@
     </mat-menu>
     <app-account-details></app-account-details>
     <div class="button-row" style="display: flex; justify-content: normal;">
-        <a (click)="onFormSubmit()" color="primary" mat-fab extended routerLink=".">
+        <a class="button-card" (click)="onFormSubmit()" color="primary" mat-fab extended routerLink=".">
             <mat-icon svgIcon="transfer">
             </mat-icon>
             Tranferencia
         </a>
-        <a (click)="toTransactionList()" color="primary" mat-fab extended routerLink=".">
+        <a class="button-card" (click)="toTransactionList()" color="primary" mat-fab extended routerLink=".">
             <mat-icon svgIcon="history">
             </mat-icon>
             Extrato
-        </a>
-        <a color="primary" mat-fab extended routerLink=".">
-            <mat-icon svgIcon="transfer">
-            </mat-icon>
-            Link 3
         </a>
     </div>
 </div>

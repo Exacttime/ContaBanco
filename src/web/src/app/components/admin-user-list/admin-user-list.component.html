@@ -17,7 +17,7 @@
                     <mat-divider></mat-divider>
                 </mat-card-content>
                 <div class="example-button-container">
-                    <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
+                    <button (click)="editUser(user.id)" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </div>

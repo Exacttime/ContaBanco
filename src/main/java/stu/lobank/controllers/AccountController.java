@@ -41,10 +41,15 @@ public class AccountController extends BaseController {
         accountService.updateAccount(destinationAccount);
     }
     @PostMapping("/conta/deposit/{sourceNumber}")
-    public void depositMoney(@PathVariable int sourceNumber, @RequestBody double amount){
+    public void depositMoney(@PathVariable int sourceNumber, @RequestBody TransferRequest transfer){
         Conta sourceAccount = accountService.getAccount(sourceNumber);
-        sourceAccount.deposit(amount);
+        sourceAccount.deposit(transfer.getAmount());
         accountService.updateAccount(sourceAccount);
     }
-
+    @PostMapping("/conta/withdraw/{sourceNumber}")
+    public void withdrawMoney(@PathVariable int sourceNumber, @RequestBody TransferRequest transfer){
+        Conta sourceAccount = accountService.getAccount(sourceNumber);
+        sourceAccount.withdraw(transfer.getAmount());
+        accountService.updateAccount(sourceAccount);
+    }
 }

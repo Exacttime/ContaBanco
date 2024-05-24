@@ -6,6 +6,7 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} f
 import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
 import {MatFabButton, MatMiniFabButton} from "@angular/material/button";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-user-list',
@@ -16,7 +17,7 @@ import {MatFabButton, MatMiniFabButton} from "@angular/material/button";
 })
 export class AdminUserListComponent implements OnInit{
   users: any[] = [];
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService,private router : Router) {
   }
   ngOnInit(){
   this.adminService.getAllUsers().subscribe({
@@ -28,5 +29,8 @@ export class AdminUserListComponent implements OnInit{
       console.log(error);
     }
   })
+  }
+  editUser(userId:string):void {
+    this.router.navigate(['edit-user/'+userId]);
   }
 }

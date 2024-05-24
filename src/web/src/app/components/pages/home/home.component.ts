@@ -9,6 +9,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {AccountDetailsComponent} from "../../account-details/account-details.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+
 const TRANSFER_ICON =
     `
 <svg xmlns="http://www.w3.org/2000/svg" 
@@ -39,7 +40,6 @@ fill="#e8eaed">
 export class HomeComponent implements OnInit{
   limit!: number;
   name!: string | null;
-  showFiller = false;
   isDrawerVisible: boolean = false;
   isAdminOrMod: boolean = false;
   constructor(private userDetailsService: UserDetailsService,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private router: Router) {

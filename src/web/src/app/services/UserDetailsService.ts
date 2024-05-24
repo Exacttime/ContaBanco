@@ -24,6 +24,9 @@ export class UserDetailsService {
         const roles = localStorage.getItem('roles');
         return roles ? JSON.parse(roles) : [];
     }
+    searchEditData(userId:string): Observable<any> {// const user
+        return this.getData(userId!);
+    }
     searchData(): Observable<any> {
         const userId = localStorage.getItem('id');  // Substitua por seu token JWT
        // const user

@@ -25,11 +25,12 @@ export class LoginFormComponent {
 
   onFormSubmit() {
     this.authService.login(this.username, this.password).subscribe(
-        (data: { token: string; id: string;roles: any}) => {
+        (data: { token: string; id: string;roles: any;name:string}) => {
           console.log('Sucesso:', data);
           localStorage.setItem('token', data.token);
           localStorage.setItem('id', data.id);
-          localStorage.setItem('roles', data.roles);
+            sessionStorage.setItem('name',data.name);
+            localStorage.setItem('roles', data.roles);
           this.errorMessage = '';
           this.router.navigate(['home']).then(r => console.log(data.token));
         },

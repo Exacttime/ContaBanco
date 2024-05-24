@@ -8,6 +8,7 @@ import {TransferenceFormComponent} from "./components/transference-form/transfer
 import {TransactionListComponent} from "./components/transaction-list/transaction-list.component";
 import {EditUserListComponent} from "./components/edit-user-list/edit-user-list.component";
 import {AdminUserListComponent} from "./components/admin-user-list/admin-user-list.component";
+import {EditUser} from "./components/edit-user/edit-user";
 
 export const appRoutes: Route[] = [
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
@@ -17,5 +18,6 @@ export const appRoutes: Route[] = [
     {path: 'transaction-list', component: TransactionListComponent},
     {path: 'edit', component: EditUserListComponent},
     {path: 'admin-user-list', component: AdminUserListComponent},
+    {path: 'edit-user/:id',component:EditUser},
     {path: '', component: IndexComponent}
 ];
